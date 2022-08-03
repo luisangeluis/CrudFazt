@@ -6,6 +6,8 @@
 
 //Arranque de la app
 const app = require('./app').app;
+//Connection to bd
+require('./database.js');
 
 app.listen(3000);
 console.log('Server on por: ', 3000);
