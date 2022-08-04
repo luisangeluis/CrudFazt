@@ -2,6 +2,7 @@ const express = require('express');
 //.HBS
 const exphbs = require('express-handlebars');
 const { create } = require('express-handlebars');
+const morgan = require('morgan');
 
 // console.log(exphbs);
 const indexRoutes = require('./routes/index.routes').router;
@@ -36,6 +37,12 @@ app.engine(
   })
 );
 app.set('view engine', '.hbs');
+
+//MIDDLEWARES
+//Sirve para ver que tipo de peticiones se hacen la pagina
+app.use(morgan('dev'))
+//Sirve para ver la peticion por consola
+app.use(express.urlencoded({extended:false}))
 
 //ROUTES
 app.use(indexRoutes);
