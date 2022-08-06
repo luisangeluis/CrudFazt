@@ -28,8 +28,30 @@ router.get('/about', (req, res) => {
   res.render('about');
 });
 
-router.get('/edit', (req, res) => {
-  res.render('edit');
+router.get('/edit/:id', async (req, res) => {
+
+  try{
+    const task = await Task.findById(req.params.id).lean();
+    console.log(task);
+    res.render('edit',{task});
+  }catch(error){
+    console.log(error);
+  }
+  
+});
+
+router.post('/edit/:id', async (req, res) => {
+  try{
+    console.log(req.body);
+    const {id} =req.params;
+  
+    await Task.findByIdAndUpdate(id,req.body);
+  
+    res.redirect('/');
+  }catch(error){
+    console.log(error.message);
+  }
+  
 });
 
 module.exports = {
