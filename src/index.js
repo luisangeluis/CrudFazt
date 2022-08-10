@@ -4,10 +4,13 @@
 //-D es para devdependencia
 // console.log(`Hello Node.js v${process.versions.node}!`);
 
+
 //Arranque de la app
 const app = require('./app').app;
 //Connection to bd
 require('./database.js');
+//VARIBLE DE ENTORNO PORT
+const {PORT} =require('./config'); 
 
-app.listen(3000);
-console.log('Server on por: ', 3000);
+app.listen(PORT);
+console.log('Server on por: ', PORT);
