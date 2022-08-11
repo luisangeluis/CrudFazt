@@ -1,11 +1,12 @@
-<table>
+{{#if tasks}}
+
+<table class="table table-bordered table-hover table-dark">
   <thead>
     <tr>
       <th>N.</th>
       <th>Title</th>
       <th>Description</th>
       <th>Operations</th>
-
     </tr>
   </thead>
   <tbody>
@@ -16,14 +17,21 @@
       <td>{{description}}</td>
       <td>
         {{#if done}}
-        <a href="/toggleDone/{{_id}}">Undone</a>
+        <a href="/toggleDone/{{_id}}" class="btn btn-dark btn-sm">Undone</a>
         {{else}}
-        <a href="/toggleDone/{{_id}}">Done</a>
+        <a href="/toggleDone/{{_id}}" class="btn btn-success btn-sm">Done</a>
         {{/if}}
-        <a href="/delete/{{_id}}">Delete</a>
-        <a href="/edit/{{_id}}">Update</a>
+        <a href="/delete/{{_id}}" class="btn btn-danger btn-sm">Delete</a>
+        <a href="/edit/{{_id}}" class="btn btn-info btn-sm">Update</a>
       </td>
     </tr>
+
     {{/each}}
   </tbody>
 </table>
+{{else}}
+<div class="text-center">
+  <h2>No tasks</h2>
+
+</div>
+{{/if}}
