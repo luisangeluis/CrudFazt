@@ -47,6 +47,9 @@ app.use(express.urlencoded({extended:false}))
 //ROUTES
 app.use(indexRoutes);
 
+//PUBLIC
+app.use(express.static(path.join(__dirname,'public')));
+
 module.exports = {
   app,
 };
